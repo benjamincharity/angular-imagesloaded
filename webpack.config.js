@@ -3,7 +3,7 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var env = process.env.WEBPACK_ENV;
 var path = require('path');
 
-var libraryName = 'library';
+var libraryName = 'MY_LIBRARY';
 
 var plugins = [], outputFile;
 
@@ -18,7 +18,7 @@ var config = {
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
   output: {
-    path: __dirname + '/lib',
+    path: __dirname + '/dist',
     filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',
@@ -46,3 +46,4 @@ var config = {
 };
 
 module.exports = config;
+
