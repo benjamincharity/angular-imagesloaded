@@ -4,8 +4,8 @@
   "description": "My_library_description",
   "main": "dist/MY_LIBRARY.js",
   "scripts": {
-    "build": "WEBPACK_ENV=build webpack",
-    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "build": "webpack --mode=build",
+    "dev": "webpack --progress --colors --watch --mode=dev",
     "test": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
   },
   "devDependencies": {
@@ -20,7 +20,8 @@
     "eslint-config-moment": "^1.5.0",
     "eslint-loader": "1.1.0",
     "mocha": "2.3.4",
-    "webpack": "1.12.9"
+    "webpack": "1.12.9",
+    "yargs": "3.32.0"
   },
   "repository": {
     "type": "git",
