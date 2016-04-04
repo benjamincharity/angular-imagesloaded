@@ -1,16 +1,17 @@
 {
+    "version": "1.0.0",
     "name": "MY_LIBRARY",
+    "description": "MY_LIBRARY_DESCRIPTION",
     "homepage": "https://github.com/benjamincharity/MY_LIBRARY",
     "authors": [
         "Benjamin Charity <ben@benjamincharity.com>"
     ],
-    "description": "My_library_description",
+    "license": "MIT",
+    "main": "dist/MY_LIBRARY.js",
     "keywords": [
         "angular",
         "KEYWORDS",
     ],
-    "license": "MIT",
-    "main": "dist/MY_LIBRARY.js",
     "dependencies": {
         "angular": "~1.4.0"
     },

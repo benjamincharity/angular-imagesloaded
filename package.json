@@ -12,9 +12,7 @@
     "url": "https://github.com/benjamincharity/MY_LIBRARY/issues"
   },
   "homepage": "https://github.com/benjamincharity/MY_LIBRARY",
-  "main": [
-    "dist/MY_LIBRARY.js"
-  ],
+  "main": "dist/MY_LIBRARY.js",
   "scripts": {
     "build": "npm run build:js && npm run build:css",
     "build:js": "WEBPACK_ENV=build webpack && osx-notifier --type \"pass\" --title \"Build successful\" --message \"gg\" --group \"npmBuild\"",
