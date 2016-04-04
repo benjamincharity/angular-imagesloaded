@@ -4,15 +4,7 @@
   "description": "My_library_description",
   "keywords": [
     "angular",
-    "angular-flickity",
-    "flickity",
-    "flickity.js",
-    "angular.js",
-    "swipe",
-    "slideshow",
-    "slider",
-    "carousel",
-    "touch"
+    "KEYWORDS",
   ],
   "author": "Benjamin Charity <ben@benjamincharity.com>",
   "license": "MIT",
@@ -36,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/benjamincharity/MY_LIBRARYy.git"
+    "url": "https://github.com/benjamincharity/MY_LIBRARY.git"
   },
   "dependencies": {
     "webpack-dev-server": "^1.14.1"
