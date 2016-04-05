@@ -1,49 +1,32 @@
-# Webpack library starter
+# project-name
 
-Webpack based boilerplate for producing libraries (Input: ES6, Output: universal library)
 
-## Features
 
-* Webpack based.
-* ES6 as a source.
-* Exports in a [umd](https://github.com/umdjs/umd) format so your library works everywhere.
-* ES6 test setup with [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/).
-* Linting with [ESLint](http://eslint.org/).
+_[Comments and Pull Requests welcome!][issues]_
 
-## Process
 
-```
-ES6 source files
-       |
-       |
-    webpack
-       |
-       +--- babel, eslint
-       |
-  ready to use
-     library
-  in umd format
-```
+## Contents
 
-## Getting started
+- [Installation](#installation)
+- [Dependencies](#dependencies)
+- [Usage](#usage)
+- [Foo](#foo)
+- [Development](#development)
 
-1. Setting up the name of your library
-  * Open `webpack.config.js` file and change the value of `libraryName` variable.
-  * Open `package.json` file and change the value of `main` property so it matches the name of your library.
-2. Build your library
-  * Run `npm install` to get the project's dependencies
-  * Run `npm run build` to produce minified version of your library.
-3. Development mode
-  * Having all the dependencies installed run `npm run dev`. This command will generate an non-minified version of your library and will run a watcher so you get the compilation on file change.
-4. Running the tests
-  * Run `npm run test`
 
-## Scripts
 
-* `npm run build` - produces production version of your library under the `lib` folder
-* `npm run dev` - produces development version of your library and runs a watcher
-* `npm run test` - well ... it runs the tests :)
 
-## Readings
+## Development
 
-* [Start your own JavaScript library using webpack and ES6](http://krasimirtsonev.com/blog/article/javascript-library-starter-using-webpack-es6)
+- `npm run build` - Build JS/CSS/HTML/SVG
+- `npm run build:js` - Build JS
+- `npm run build:css` - Build CSS
+- `npm run watch:css` - Watch CSS and rebuild on change
+- `npm run watch:js` - Watch JS/HTML and rebuild on change
+- `npm run watch` - Watch JS/CSS/HTML and rebuild on change
+
+
+
+
+[issues]: https://github.com/benjamincharity/MY_LIBRARY/issues
+
