@@ -15,6 +15,27 @@ _[Comments and Pull Requests welcome!][issues]_
 
 
 
+## Installation
+
+#### NPM
+```bash
+npm install MY_LIBRARY --save
+```
+
+#### Bower
+```bash
+bower install MY_LIBRARY --save
+```
+
+## Dependencies
+
+- Angular.js (~1.4.0)
+
+
+## Usage
+
+
+
 
 ## Development
 
