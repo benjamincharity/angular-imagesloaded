@@ -10,7 +10,7 @@
     "main": "dist/MY_LIBRARY.js",
     "keywords": [
       "angular",
-      "KEYWORDS",
+      "KEYWORDS"
     ],
     "dependencies": {
       "angular": "~1.4.0"
