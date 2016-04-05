@@ -5,22 +5,22 @@
   "homepage": "https://github.com/benjamincharity/MY_LIBRARY",
   "authors": [
     "Benjamin Charity <ben@benjamincharity.com>"
-    ],
-    "license": "MIT",
-    "main": "dist/MY_LIBRARY.js",
-    "keywords": [
-      "angular",
-      "KEYWORDS"
-    ],
-    "dependencies": {
-      "angular": "~1.4.0"
-    },
-    "ignore": [
-      "**/.*",
-      "src",
-      "node_modules",
-      "package.json",
-      "webpack.config.js"
-    ]
+  ],
+  "license": "MIT",
+  "main": "dist/MY_LIBRARY.js",
+  "keywords": [
+    "angular",
+    "KEYWORDS"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0"
+  },
+  "ignore": [
+    "**/.*",
+    "src",
+    "node_modules",
+    "package.json",
+    "webpack.config.js"
+  ]
 }
 
