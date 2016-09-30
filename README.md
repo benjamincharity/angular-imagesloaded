@@ -11,6 +11,7 @@ _[Comments and Pull Requests welcome!][issues]_
 - [Dependencies](#dependencies)
 - [Usage](#usage)
 - [Development](#development)
+- [About imagesloaded](#about-imagesloaded)
 
 
 
@@ -47,6 +48,22 @@ bower install angular-imagesloaded --save
 
 
 
+## About imagesloaded
+
+> _JavaScript is all like "You images done yet or what?"_
+
+Created by [David DeSandro][desandro].
+
+- [imagesloaded on Github][il_github]
+- [imagesloaded Documentation][il_docs]
+
+
+
+
 
 [issues]: https://github.com/benjamincharity/angular-imagesloaded/issues
+
+[il_github]: https://github.com/desandro/imagesloaded
+[il_docs]: http://imagesloaded.desandro.com/
+[desandro]: http://desandro.com/
 
