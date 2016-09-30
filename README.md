@@ -1,6 +1,6 @@
-# project-name
+# angular-imagesloaded
 
-
+AngularJS integration for the imagesloaded library.
 
 _[Comments and Pull Requests welcome!][issues]_
 
@@ -10,7 +10,6 @@ _[Comments and Pull Requests welcome!][issues]_
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
-- [Foo](#foo)
 - [Development](#development)
 
 
@@ -19,12 +18,12 @@ _[Comments and Pull Requests welcome!][issues]_
 
 #### NPM
 ```bash
-npm install MY_LIBRARY --save
+npm install angular-imagesloaded --save
 ```
 
 #### Bower
 ```bash
-bower install MY_LIBRARY --save
+bower install angular-imagesloaded --save
 ```
 
 ## Dependencies
@@ -49,5 +48,5 @@ bower install MY_LIBRARY --save
 
 
 
-[issues]: https://github.com/benjamincharity/MY_LIBRARY/issues
+[issues]: https://github.com/benjamincharity/angular-imagesloaded/issues
 

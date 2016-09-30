@@ -1,19 +1,20 @@
 {
-  "version": "0.1.0",
-  "name": "MY_LIBRARY",
-  "description": "MY_LIBRARY_DESCRIPTION",
-  "homepage": "https://github.com/benjamincharity/MY_LIBRARY",
+  "name": "angular-imagesloaded",
+  "description": ":camera: AngularJS integration for the imagesloaded library.",
+  "homepage": "https://github.com/benjamincharity/angular-imagesloaded",
   "authors": [
     "Benjamin Charity <ben@benjamincharity.com>"
   ],
   "license": "MIT",
-  "main": "dist/MY_LIBRARY.js",
+  "main": "dist/angular-imagesloaded.js",
   "keywords": [
     "angular",
-    "KEYWORDS"
+    "images",
+    "loaded",
+    "imagesloaded"
   ],
   "dependencies": {
-    "angular": "~1.4.0"
+    "angular": "^1.4.0"
   },
   "ignore": [
     "**/.*",
