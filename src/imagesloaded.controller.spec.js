@@ -77,7 +77,7 @@ describe('ImagesLoadedController', () => {
         });
 
 
-        it(`should allow the user to override the background property`, () => {
+        it(`should allow the user to override the background property with a boolean`, () => {
             const template = angular.element(`
               <div
                 bc-imagesloaded
@@ -93,6 +93,26 @@ describe('ImagesLoadedController', () => {
             expect(actual).toEqual(expected);
         });
 
+
+        it(`should allow the user to override the background property with a selector`, () => {
+            const template = angular.element(`
+              <div
+                bc-imagesloaded
+                bc-background=".test"
+              >
+                <div
+                    class="test"
+                    style="background-image: url(http://lorempixel.com/400/300)"
+                ></div>
+              </div>
+            `);
+
+            setup(template);
+
+            const actual = vm.options.background;
+            const expected = '.test';
+            expect(actual).toEqual(expected);
+        });
 
     });
 
