@@ -1,7 +1,7 @@
 import { ImagesLoadedDirective } from './imagesloaded.directive';
 
 
-angular.module('bc.imagesLoaded', [])
+angular.module('bc.imagesloaded', [])
     .directive('bcImagesloaded', ImagesLoadedDirective)
 ;
 
