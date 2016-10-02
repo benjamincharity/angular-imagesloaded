@@ -81,10 +81,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        replace: true,
 	        scope: {},
 	        bindToController: {
-	            bcImagesloaded: '@?',
-	            bcBackground: '@?',
-	            bcAlwaysMethod: '&?'
-	        },
+	            bcImagesloaded: '@?', // accepts object or string
+	            bcBackground: '@?', // accepts bool or string
+	            bcAlwaysMethod: '&?' },
 	        link: linkFunction,
 	        controller: _imagesloaded.ImagesLoadedController,
 	        controllerAs: 'vm'
@@ -144,13 +143,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	            // If the background option is set to true
 	            if (this.bcBackground && this.bcBackground === 'true') {
-	                // Reflect that in the options object
 	                this.options.background = true;
+	            } else if (this.bcBackground && typeof this.bcBackground === 'string') {
+	                // if the background type is a string, expect it to be a selector
+	                this.options.background = this.bcBackground;
 	            }
 	
+	            // Expose imagesLoaded on this
 	            this.imagesLoaded = _imagesloaded2.default;
+	
 	            // Assigning this to the controller makes testing easier
 	            this.initElement;
+	
+	            // Test for string or object
 	            var isValidObject = _typeof(this.bcImagesloaded) === 'object';
 	            var isValidString = typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
 	

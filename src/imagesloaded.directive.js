@@ -9,9 +9,9 @@ export function ImagesLoadedDirective(
         replace: true,
         scope: {},
         bindToController: {
-            bcImagesloaded: '@?',
-            bcBackground: '@?',
-            bcAlwaysMethod: '&?',
+            bcImagesloaded: '@?', // accepts object or string
+            bcBackground: '@?',   // accepts bool or string
+            bcAlwaysMethod: '&?', // accepts method
         },
         link: linkFunction,
         controller: ImagesLoadedController,

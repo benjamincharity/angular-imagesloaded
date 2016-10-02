@@ -18,14 +18,19 @@ export class ImagesLoadedController {
 
         // If the background option is set to true
         if (this.bcBackground && this.bcBackground === 'true') {
-            // Reflect that in the options object
             this.options.background = true;
+        } else if (this.bcBackground && typeof this.bcBackground === 'string') {
+            // if the background type is a string, expect it to be a selector
+            this.options.background = this.bcBackground;
         }
 
-
+        // Expose imagesLoaded on this
         this.imagesLoaded = imagesLoaded;
+
         // Assigning this to the controller makes testing easier
         this.initElement;
+
+        // Test for string or object
         const isValidObject = typeof this.bcImagesloaded === 'object'
         const isValidString =
             typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
