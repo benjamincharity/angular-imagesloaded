@@ -1,3 +1,4 @@
+import imagesLoaded from 'imagesloaded';
 import { ImagesLoadedController } from './imagesloaded.controller';
 
 export function ImagesLoadedDirective(
@@ -9,6 +10,7 @@ export function ImagesLoadedDirective(
         replace: true,
         scope: {},
         bindToController: {
+            bcAlwaysMethod: '&?',
         },
         link: linkFunction,
         controller: ImagesLoadedController,
@@ -21,8 +23,11 @@ export function ImagesLoadedDirective(
     /**
      * Link
      */
-    function linkFunction($scope, $element, $attrs, vm) {
+    function linkFunction($scope, $element, $attrs, $ctrl) {
+        console.log('in link');
+        $ctrl.instance = new imagesLoaded($element);
 
+        $ctrl._activate();
     }
 
 }
