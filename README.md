@@ -35,6 +35,8 @@ bower install angular-imagesloaded --save
 
 ## Usage
 
+`bc-imagesloaded`
+
 As attribute:
 
 ```html
@@ -45,6 +47,11 @@ As attribute:
   alt=""
 />
 ```
+
+can accept:
+
+- string (selector)
+- object (element or multiple elements)
 
 
 Pass selector:
