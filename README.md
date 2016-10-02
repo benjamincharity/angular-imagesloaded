@@ -1,5 +1,7 @@
 # angular-imagesloaded
 
+> **NOTE:** This is currently under development and not ready for use.
+
 AngularJS integration for the imagesloaded library.
 
 _[Comments and Pull Requests welcome!][issues]_
