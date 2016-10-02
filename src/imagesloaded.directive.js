@@ -9,11 +9,12 @@ export function ImagesLoadedDirective(
         replace: true,
         scope: {},
         bindToController: {
-            bcImagesloaded: '@?', // accepts object or string
-            bcBackground: '@?',   // accepts bool or string
-            bcAlwaysMethod: '&?', // accepts method
-            bcDoneMethod: '&?',   // accepts method
-            bcFailMethod: '&?',   // accepts method
+            bcImagesloaded: '@?',   // accepts object or string
+            bcBackground: '@?',     // accepts bool or string
+            bcAlwaysMethod: '&?',   // accepts method
+            bcDoneMethod: '&?',     // accepts method
+            bcFailMethod: '&?',     // accepts method
+            bcProgressMethod: '&?', // accepts method
         },
         link: linkFunction,
         controller: ImagesLoadedController,

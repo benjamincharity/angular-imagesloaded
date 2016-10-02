@@ -85,7 +85,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            bcBackground: '@?', // accepts bool or string
 	            bcAlwaysMethod: '&?', // accepts method
 	            bcDoneMethod: '&?', // accepts method
-	            bcFailMethod: '&?' },
+	            bcFailMethod: '&?', // accepts method
+	            bcProgressMethod: '&?' },
 	        link: linkFunction,
 	        controller: _imagesloaded.ImagesLoadedController,
 	        controllerAs: 'vm'
@@ -199,6 +200,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                // Call the custom method on the event
 	                this.instance.on('fail', function (instance) {
 	                    _this.bcFailMethod({ instance: instance });
+	                });
+	            }
+	
+	            // If 'progress' function was assigned
+	            if (typeof this.bcProgressMethod === 'function') {
+	                // Call the custom method on the event
+	                this.instance.on('progress', function (instance, image) {
+	                    _this.bcProgressMethod({ instance: instance, image: image });
 	                });
 	            }
 	        }

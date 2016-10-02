@@ -82,6 +82,14 @@ export class ImagesLoadedController {
             })
         }
 
+        // If 'progress' function was assigned
+        if (typeof this.bcProgressMethod === 'function') {
+            // Call the custom method on the event
+            this.instance.on('progress', (instance, image) => {
+                this.bcProgressMethod({ instance: instance, image: image });
+            })
+        }
+
     }
 
 
