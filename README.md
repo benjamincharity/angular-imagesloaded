@@ -37,7 +37,7 @@ bower install angular-imagesloaded --save
 
 ## Usage
 
-`bc-imagesloaded`
+### `bc-imagesloaded`
 
 As attribute:
 
@@ -68,6 +68,33 @@ Pass selector:
     src="http://lorempixel.com/400/300"
     alt=""
   />
+</div>
+```
+
+### `bc-background`
+
+can accept:
+
+- string (selector)
+- bool
+
+```html
+<div
+  bc-imagesloaded
+  bc-background="true"
+  style="background-image: url(http://lorempixel.com/400/300)"
+></div>
+```
+
+```html
+<div
+  bc-imagesloaded
+  bc-background=".test"
+>
+  <div
+    class="test"
+    style="background-image: url(http://lorempixel.com/400/300)"
+  ></div>
 </div>
 ```
 
