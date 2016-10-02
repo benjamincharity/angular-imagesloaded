@@ -1,5 +1,4 @@
 describe('ImagesLoadedController', function() {
-    const WAIT = 9000;
 
     // Include the module
     beforeEach(angular.mock.module('bc.imagesloaded'));
@@ -134,9 +133,16 @@ describe('ImagesLoadedController', function() {
 
 
     describe('events', function() {
+        const WAIT = 9000;
+        let originalTimeout;
 
         beforeEach(() => {
+            originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
             jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        });
+
+        afterEach(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
         });
 
         it(`should trigger the associated method on the 'always' event`, function(done) {
@@ -157,6 +163,32 @@ describe('ImagesLoadedController', function() {
 
                 // Verify the instance was passed through
                 const args = this.$scope.always.calls.allArgs();
+                const actual = args[0][0].images.length > 0;
+                const expected = true;
+                expect(actual).toEqual(expected);
+
+                done();
+            }, WAIT);
+        });
+
+        it(`should trigger the associated method on the 'done' event`, function(done) {
+            const template = angular.element(`
+              <img
+                bc-imagesloaded
+                bc-done-method="done(instance)"
+                src="http://lorempixel.com/100/100"
+                alt=""
+              />
+            `);
+
+            this.compileDirective(template);
+
+            // Wait for the image to load
+            setTimeout(() => {
+                expect(this.$scope.done).toHaveBeenCalled();
+
+                // Verify the instance was passed through
+                const args = this.$scope.done.calls.allArgs();
                 const actual = args[0][0].images.length > 0;
                 const expected = true;
                 expect(actual).toEqual(expected);
