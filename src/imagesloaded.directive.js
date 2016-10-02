@@ -27,7 +27,8 @@ export function ImagesLoadedDirective(
      */
     function linkFunction($scope, $element, $attrs, $ctrl) {
         $ctrl.imagesLoaded = imagesLoaded;
-        let element;
+        // Assigning this to the controller makes testing easier
+        $ctrl.initElement;
         const isValidObject = typeof $ctrl.bcImagesloaded === 'object'
         const isValidString =
             typeof $ctrl.bcImagesloaded === 'string' && $ctrl.bcImagesloaded.length > 0;
@@ -35,15 +36,14 @@ export function ImagesLoadedDirective(
         // If a selector is passed in
         if (isValidObject || isValidString) {
             // Use it
-            element = $ctrl.bcImagesloaded;
+            $ctrl.initElement = $ctrl.bcImagesloaded;
         } else {
             // Otherwise use the $element itself
-            element = $element;
-            console.log('in otherwise: ', $element);
+            $ctrl.initElement = $element;
         }
 
         // Initialize imagesLoaded
-        $ctrl.instance = $ctrl.imagesLoaded(element, $ctrl.options);
+        $ctrl.instance = $ctrl.imagesLoaded($ctrl.initElement, $ctrl.options);
 
 
         $ctrl._activate();
