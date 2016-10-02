@@ -197,6 +197,32 @@ describe('ImagesLoadedController', function() {
             }, WAIT);
         });
 
+        it(`should trigger the associated method on the 'fail' event`, function(done) {
+            const template = angular.element(`
+              <img
+                bc-imagesloaded
+                bc-fail-method="fail(instance)"
+                src="img/does/not/exist.jpg"
+                alt=""
+              />
+            `);
+
+            this.compileDirective(template);
+
+            // Wait for the image to load
+            setTimeout(() => {
+                expect(this.$scope.fail).toHaveBeenCalled();
+
+                // Verify the instance was passed through
+                const args = this.$scope.fail.calls.allArgs();
+                const actual = args[0][0].images.length > 0;
+                const expected = true;
+                expect(actual).toEqual(expected);
+
+                done();
+            }, WAIT);
+        });
+
     });
 
 
