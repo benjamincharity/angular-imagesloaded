@@ -1,27 +1,43 @@
-describe('ImagesLoadedController', () => {
-    let $compile;
-    let $rootScope;
-    let $scope;
-    let element;
-    let vm;
+describe('ImagesLoadedController', function() {
+    const WAIT = 9000;
 
     // Include the module
     beforeEach(angular.mock.module('bc.imagesloaded'));
 
-    // Inject
-    beforeEach(inject((_$compile_, _$rootScope_) => {
-        $compile = _$compile_;
-        $rootScope = _$rootScope_;
-    }));
 
-    afterEach(() => {
-        cleanup();
+    beforeEach(function() {
+
+        inject(function($compile, $rootScope) {
+            this.$compile = $compile;
+            this.$rootScope = $rootScope;
+
+            this.$scope = this.$rootScope.$new();
+            this.$scope.always = jasmine.createSpy('always');
+            this.$scope.done = jasmine.createSpy('done');
+            this.$scope.fail = jasmine.createSpy('fail');
+            this.$scope.progress = jasmine.createSpy('progress');
+
+        });
+
     });
 
 
-    describe('bcImagesloaded', () => {
+    beforeEach(function() {
+        this.compileDirective = function(template) {
+            this.element = this.$compile(template)(this.$scope);
+            this.vm = this.element.isolateScope().vm;
+        };
+    });
 
-        it(`should use $element when nothing is passed in`, () => {
+
+    afterEach(function() {
+        this.element.remove();
+    });
+
+
+    describe('bcImagesloaded', function() {
+
+        it(`should use $element when nothing is passed in`, function() {
             const template = angular.element(`
               <img
                 bc-imagesloaded
@@ -30,15 +46,15 @@ describe('ImagesLoadedController', () => {
               />
             `);
 
-            setup(template);
+            this.compileDirective(template);
 
-            const actual = typeof vm.initElement;
+            const actual = typeof this.vm.initElement;
             const expected = 'object';
             expect(actual).toEqual(expected);
         });
 
 
-        it(`should use a selector if one is passed in`, () => {
+        it(`should use a selector if one is passed in`, function() {
             const template = angular.element(`
               <div bc-imagesloaded=".imagesloaded__test">
                 <img
@@ -49,9 +65,9 @@ describe('ImagesLoadedController', () => {
               </div>
             `);
 
-            setup(template);
+            this.compileDirective(template);
 
-            const actual = typeof vm.initElement;
+            const actual = typeof this.vm.initElement;
             const expected = 'string';
             expect(actual).toEqual(expected);
         });
@@ -59,9 +75,9 @@ describe('ImagesLoadedController', () => {
     });
 
 
-    describe('options', () => {
+    describe('background option', function() {
 
-        it(`should not have background defined by default`, () => {
+        it(`should not be defined by default`, function() {
             const template = angular.element(`
               <div
                 bc-imagesloaded
@@ -69,15 +85,15 @@ describe('ImagesLoadedController', () => {
               ></div>
             `);
 
-            setup(template);
+            this.compileDirective(template);
 
-            const actual = vm.options.background;
+            const actual = this.vm.options.background;
             const expected = undefined;
             expect(actual).toEqual(expected);
         });
 
 
-        it(`should allow the user to override the background property with a boolean`, () => {
+        it(`should allow the user to set a boolean`, function() {
             const template = angular.element(`
               <div
                 bc-imagesloaded
@@ -86,15 +102,15 @@ describe('ImagesLoadedController', () => {
               ></div>
             `);
 
-            setup(template);
+            this.compileDirective(template);
 
-            const actual = vm.options.background;
+            const actual = this.vm.options.background;
             const expected = true;
             expect(actual).toEqual(expected);
         });
 
 
-        it(`should allow the user to override the background property with a selector`, () => {
+        it(`should allow the user to set a selector string`, function() {
             const template = angular.element(`
               <div
                 bc-imagesloaded
@@ -107,9 +123,9 @@ describe('ImagesLoadedController', () => {
               </div>
             `);
 
-            setup(template);
+            this.compileDirective(template);
 
-            const actual = vm.options.background;
+            const actual = this.vm.options.background;
             const expected = '.test';
             expect(actual).toEqual(expected);
         });
@@ -117,20 +133,41 @@ describe('ImagesLoadedController', () => {
     });
 
 
+    describe('events', function() {
+
+        beforeEach(() => {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        });
+
+        it(`should trigger the associated method on the 'always' event`, function(done) {
+            const template = angular.element(`
+              <img
+                bc-imagesloaded
+                bc-always-method="always(instance)"
+                src="http://lorempixel.com/100/100"
+                alt=""
+              />
+            `);
+
+            this.compileDirective(template);
+
+            // Wait for the image to load
+            setTimeout(() => {
+                expect(this.$scope.always).toHaveBeenCalled();
+
+                // Verify the instance was passed through
+                const args = this.$scope.always.calls.allArgs();
+                const actual = args[0][0].images.length > 0;
+                const expected = true;
+                expect(actual).toEqual(expected);
+
+                done();
+            }, WAIT);
+        });
+
+    });
 
 
-    function setup(template) {
-        $scope = $rootScope.$new();
-        element = $compile(template)($scope);
-        $scope.$apply();
-        vm = element.isolateScope().vm;
-    }
-
-    function cleanup() {
-        $scope = null;
-        element = null;
-        vm = null;
-    }
 
 });
 
