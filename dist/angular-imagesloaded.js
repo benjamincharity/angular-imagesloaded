@@ -69,18 +69,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-	
 	exports.ImagesLoadedDirective = ImagesLoadedDirective;
 	
 	var _imagesloaded = __webpack_require__(2);
-	
-	var _imagesloaded2 = _interopRequireDefault(_imagesloaded);
-	
-	var _imagesloaded3 = __webpack_require__(4);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function ImagesLoadedDirective() {
 	    'ngInject';
@@ -95,7 +86,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            bcAlwaysMethod: '&?'
 	        },
 	        link: linkFunction,
-	        controller: _imagesloaded3.ImagesLoadedController,
+	        controller: _imagesloaded.ImagesLoadedController,
 	        controllerAs: 'vm'
 	    };
 	
@@ -105,30 +96,96 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Link
 	     */
 	    function linkFunction($scope, $element, $attrs, $ctrl) {
-	        $ctrl.imagesLoaded = _imagesloaded2.default;
-	        var element = void 0;
-	        var isValidObject = _typeof($ctrl.bcImagesloaded) === 'object';
-	        var isValidString = typeof $ctrl.bcImagesloaded === 'string' && $ctrl.bcImagesloaded.length > 0;
+	        // Expose the $element to the controller
+	        $ctrl.$element = $element;
 	
-	        // If a selector is passed in
-	        if (isValidObject || isValidString) {
-	            // Use it
-	            element = $ctrl.bcImagesloaded;
-	        } else {
-	            // Otherwise use the $element itself
-	            element = $element;
-	            console.log('in otherwise: ', $element);
-	        }
-	
-	        // Initialize imagesLoaded
-	        $ctrl.instance = $ctrl.imagesLoaded(element, $ctrl.options);
-	
-	        $ctrl._activate();
+	        // Once we have access to the $element, get everything set up
+	        $ctrl.setup();
 	    }
 	}
 
 /***/ },
 /* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.ImagesLoadedController = undefined;
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _imagesloaded = __webpack_require__(3);
+	
+	var _imagesloaded2 = _interopRequireDefault(_imagesloaded);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var ImagesLoadedController = exports.ImagesLoadedController = function () {
+	    function ImagesLoadedController() {
+	        'ngInject';
+	
+	        _classCallCheck(this, ImagesLoadedController);
+	    }
+	
+	    _createClass(ImagesLoadedController, [{
+	        key: 'setup',
+	        value: function setup() {
+	            var _this = this;
+	
+	            // Set up default options object
+	            this.options = {};
+	
+	            // If the background option is set to true
+	            if (this.bcBackground && this.bcBackground === 'true') {
+	                // Reflect that in the options object
+	                this.options.background = true;
+	            }
+	
+	            this.imagesLoaded = _imagesloaded2.default;
+	            // Assigning this to the controller makes testing easier
+	            this.initElement;
+	            var isValidObject = _typeof(this.bcImagesloaded) === 'object';
+	            var isValidString = typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
+	
+	            // If a selector is passed in
+	            if (isValidObject || isValidString) {
+	                // Use it
+	                this.initElement = this.bcImagesloaded;
+	            } else {
+	                // Otherwise use the $element itself
+	                this.initElement = this.$element;
+	            }
+	
+	            // Initialize imagesLoaded
+	            this.instance = this.imagesLoaded(this.initElement, this.options);
+	
+	            // If a function was assigned
+	            if (typeof this.bcAlwaysMethod === 'function') {
+	                // Call the custom method on the always event
+	                this.instance.on('always', function (instance) {
+	                    _this.bcAlwaysMethod({ instance: instance });
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'imageLoaded',
+	        value: function imageLoaded() {
+	            console.log('image was loaded!');
+	        }
+	    }]);
+	
+	    return ImagesLoadedController;
+	}();
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -149,7 +206,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  if (true) {
 	    // AMD
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function (EvEmitter) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(4)], __WEBPACK_AMD_DEFINE_RESULT__ = function (EvEmitter) {
 	      return factory(window, EvEmitter);
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) == 'object' && module.exports) {
@@ -498,7 +555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -612,56 +669,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return EvEmitter;
 	});
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var ImagesLoadedController = exports.ImagesLoadedController = function () {
-	    function ImagesLoadedController() {
-	        'ngInject';
-	
-	        //this._activate();
-	
-	        _classCallCheck(this, ImagesLoadedController);
-	    }
-	
-	    _createClass(ImagesLoadedController, [{
-	        key: '_activate',
-	        value: function _activate() {
-	            var _this = this;
-	
-	            this.options = {
-	                background: this.bcBackground ? this.bcBackground : false
-	            };
-	
-	            // If a function was assigned
-	            if (typeof this.bcAlwaysMethod === 'function') {
-	                // Call the custom method on the always event
-	                this.instance.on('always', function (instance) {
-	                    _this.bcAlwaysMethod({ instance: instance });
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'imageLoaded',
-	        value: function imageLoaded() {
-	            console.log('image was loaded!');
-	        }
-	    }]);
-	
-	    return ImagesLoadedController;
-	}();
 
 /***/ }
 /******/ ])
