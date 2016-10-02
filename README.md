@@ -10,6 +10,7 @@ _[Comments and Pull Requests welcome!][issues]_
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
+- [Events](#events)
 - [Development](#development)
 - [About imagesloaded](#about-imagesloaded)
 
@@ -29,11 +30,52 @@ bower install angular-imagesloaded --save
 
 ## Dependencies
 
-- Angular.js (~1.4.0)
+- Angular.js (^1.4.0)
 
 
 ## Usage
 
+As attribute:
+
+```html
+<img
+  src="http://lorempixel.com/400/300"
+  bc-imagesloaded
+  bc-always-method="vm.always(instance)"
+  alt=""
+/>
+```
+
+
+Pass selector:
+
+```html
+<div
+  bc-imagesloaded=".imagesloaded__test"
+  bc-always-method="vm.always(instance)"
+>
+  <img
+    class="imagesloaded__test"
+    src="http://lorempixel.com/400/300"
+    alt=""
+  />
+</div>
+```
+
+
+## Events
+
+
+### Always
+
+
+### Done
+
+
+### Fail
+
+
+### Progress
 
 
 
