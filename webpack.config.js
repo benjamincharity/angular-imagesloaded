@@ -8,8 +8,8 @@ var libraryName = 'angular-imagesloaded';
 
 var config = {
     entry: {
-        'LIBRARY_NAME': './src/index.js',
-        'LIBRARY_NAME.min': './src/index.js',
+        'angular-imagesloaded': './src/index.js',
+        'angular-imagesloaded.min': './src/index.js',
     },
     devtool: 'source-map',
     output: {
