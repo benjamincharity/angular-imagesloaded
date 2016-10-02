@@ -74,6 +74,14 @@ export class ImagesLoadedController {
             })
         }
 
+        // If 'fail' function was assigned
+        if (typeof this.bcFailMethod === 'function') {
+            // Call the custom method on the event
+            this.instance.on('fail', (instance) => {
+                this.bcFailMethod({ instance: instance });
+            })
+        }
+
     }
 
 

@@ -13,6 +13,7 @@ export function ImagesLoadedDirective(
             bcBackground: '@?',   // accepts bool or string
             bcAlwaysMethod: '&?', // accepts method
             bcDoneMethod: '&?',   // accepts method
+            bcFailMethod: '&?',   // accepts method
         },
         link: linkFunction,
         controller: ImagesLoadedController,

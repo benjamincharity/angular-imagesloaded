@@ -84,7 +84,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            bcImagesloaded: '@?', // accepts object or string
 	            bcBackground: '@?', // accepts bool or string
 	            bcAlwaysMethod: '&?', // accepts method
-	            bcDoneMethod: '&?' },
+	            bcDoneMethod: '&?', // accepts method
+	            bcFailMethod: '&?' },
 	        link: linkFunction,
 	        controller: _imagesloaded.ImagesLoadedController,
 	        controllerAs: 'vm'
@@ -181,16 +182,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (typeof this.bcAlwaysMethod === 'function') {
 	                // Call the custom method on the event
 	                this.instance.on('always', function (instance) {
-	                    console.log('calling always');
 	                    _this.bcAlwaysMethod({ instance: instance });
 	                });
 	            }
 	
 	            // If 'done' function was assigned
-	            if (typeof this.DoneMethod === 'function') {
+	            if (typeof this.bcDoneMethod === 'function') {
 	                // Call the custom method on the event
 	                this.instance.on('done', function (instance) {
 	                    _this.bcDoneMethod({ instance: instance });
+	                });
+	            }
+	
+	            // If 'fail' function was assigned
+	            if (typeof this.bcFailMethod === 'function') {
+	                // Call the custom method on the event
+	                this.instance.on('fail', function (instance) {
+	                    _this.bcFailMethod({ instance: instance });
 	                });
 	            }
 	        }
