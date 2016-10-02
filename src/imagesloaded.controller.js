@@ -13,6 +13,9 @@ export class ImagesLoadedController {
 
 
     _activate() {
+        this.options = {
+            background: this.bcBackground ? this.bcBackground : false,
+        };
 
         // If a function was assigned
         if (typeof this.bcAlwaysMethod === 'function') {
