@@ -12,6 +12,7 @@ export function ImagesLoadedDirective(
             bcImagesloaded: '@?', // accepts object or string
             bcBackground: '@?',   // accepts bool or string
             bcAlwaysMethod: '&?', // accepts method
+            bcDoneMethod: '&?',   // accepts method
         },
         link: linkFunction,
         controller: ImagesLoadedController,

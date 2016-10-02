@@ -50,20 +50,31 @@ export class ImagesLoadedController {
 
 
 
+        this._bindEvents();
 
 
+    }
 
-        // If a function was assigned
+
+    _bindEvents() {
+
+        // If 'always' function was assigned
         if (typeof this.bcAlwaysMethod === 'function') {
-            // Call the custom method on the always event
+            // Call the custom method on the event
             this.instance.on('always', (instance) => {
                 this.bcAlwaysMethod({ instance: instance });
             })
         }
 
+        // If 'done' function was assigned
+        if (typeof this.bcDoneMethod === 'function') {
+            // Call the custom method on the event
+            this.instance.on('done', (instance) => {
+                this.bcDoneMethod({ instance: instance });
+            })
+        }
+
     }
-
-
 
 
     imageLoaded() {

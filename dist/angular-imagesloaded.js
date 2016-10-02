@@ -83,7 +83,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        bindToController: {
 	            bcImagesloaded: '@?', // accepts object or string
 	            bcBackground: '@?', // accepts bool or string
-	            bcAlwaysMethod: '&?' },
+	            bcAlwaysMethod: '&?', // accepts method
+	            bcDoneMethod: '&?' },
 	        link: linkFunction,
 	        controller: _imagesloaded.ImagesLoadedController,
 	        controllerAs: 'vm'
@@ -136,8 +137,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _createClass(ImagesLoadedController, [{
 	        key: 'setup',
 	        value: function setup() {
-	            var _this = this;
-	
 	            // Set up default options object
 	            this.options = {};
 	
@@ -171,11 +170,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // Initialize imagesLoaded
 	            this.instance = this.imagesLoaded(this.initElement, this.options);
 	
-	            // If a function was assigned
+	            this._bindEvents();
+	        }
+	    }, {
+	        key: '_bindEvents',
+	        value: function _bindEvents() {
+	            var _this = this;
+	
+	            // If 'always' function was assigned
 	            if (typeof this.bcAlwaysMethod === 'function') {
-	                // Call the custom method on the always event
+	                // Call the custom method on the event
 	                this.instance.on('always', function (instance) {
+	                    console.log('calling always');
 	                    _this.bcAlwaysMethod({ instance: instance });
+	                });
+	            }
+	
+	            // If 'done' function was assigned
+	            if (typeof this.DoneMethod === 'function') {
+	                // Call the custom method on the event
+	                this.instance.on('done', function (instance) {
+	                    _this.bcDoneMethod({ instance: instance });
 	                });
 	            }
 	        }
