@@ -11,6 +11,7 @@ export function ImagesLoadedDirective(
         scope: {},
         bindToController: {
             bcImagesloaded: '@?',
+            bcBackground: '@?',
             bcAlwaysMethod: '&?',
         },
         link: linkFunction,
@@ -25,16 +26,24 @@ export function ImagesLoadedDirective(
      * Link
      */
     function linkFunction($scope, $element, $attrs, $ctrl) {
-        console.log('in link');
+        $ctrl.imagesLoaded = imagesLoaded;
+        let element;
+        const isValidObject = typeof $ctrl.bcImagesloaded === 'object'
+        const isValidString =
+            typeof $ctrl.bcImagesloaded === 'string' && $ctrl.bcImagesloaded.length > 0;
 
         // If a selector is passed in
-        if (typeof $ctrl.bcImagesloaded === 'string' || typeof $ctrl.bcImagesloaded === 'object') {
+        if (isValidObject || isValidString) {
             // Use it
-            $ctrl.instance = new imagesLoaded($ctrl.bcImagesloaded);
+            element = $ctrl.bcImagesloaded;
         } else {
             // Otherwise use the $element itself
-            $ctrl.instance = new imagesLoaded($element);
+            element = $element;
+            console.log('in otherwise: ', $element);
         }
+
+        // Initialize imagesLoaded
+        $ctrl.instance = $ctrl.imagesLoaded(element, $ctrl.options);
 
 
         $ctrl._activate();
