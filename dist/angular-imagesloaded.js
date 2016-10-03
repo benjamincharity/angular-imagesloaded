@@ -159,22 +159,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // Expose imagesLoaded on 'this'
 	            this.imagesLoaded = _imagesloaded2.default;
 	
+	            this._initialize();
+	            this._bindEvents();
+	        }
+	    }, {
+	        key: '_initialize',
+	        value: function _initialize() {
 	            // Test for string or object
 	            var isValidObject = _typeof(this.bcImagesloaded) === 'object';
 	            var isValidString = typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
-	            var initElement = void 0;
 	
 	            // If a selector is passed in
 	            if (isValidString) {
 	
 	                // If a class was passed in
 	                if (this.bcImagesloaded.charAt(0) === '.') {
-	                    initElement = this.$element[0].querySelectorAll(this.bcImagesloaded);
+	                    var initElement = this.$element[0].querySelectorAll(this.bcImagesloaded);
 	                    this.instance = this.imagesLoaded(initElement, this.options);
 	                } else if (this.bcImagesloaded.charAt(0) === '#') {
 	                    // If an ID was passed in
-	                    initElement = this.$element[0].querySelector(this.bcImagesloaded);
-	                    this.instance = this.imagesLoaded(initElement, this.options);
+	                    var _initElement = this.$element[0].querySelector(this.bcImagesloaded);
+	                    this.instance = this.imagesLoaded(_initElement, this.options);
 	                }
 	            } else if (isValidObject) {
 	                // If it's an object, pass it straight in
@@ -183,8 +188,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                // By default use the element itself
 	                this.instance = this.imagesLoaded(this.$element, this.options);
 	            }
-	
-	            this._bindEvents();
 	        }
 	    }, {
 	        key: '_bindEvents',
@@ -222,11 +225,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _this.bcProgressMethod({ instance: instance, image: image });
 	                });
 	            }
-	        }
-	    }, {
-	        key: 'imageLoaded',
-	        value: function imageLoaded() {
-	            console.log('image was loaded!');
 	        }
 	    }]);
 	

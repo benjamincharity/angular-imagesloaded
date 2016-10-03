@@ -31,22 +31,27 @@ export class ImagesLoadedController {
         // Expose imagesLoaded on 'this'
         this.imagesLoaded = imagesLoaded;
 
+        this._initialize();
+        this._bindEvents();
+    }
+
+
+    _initialize() {
         // Test for string or object
         const isValidObject = typeof this.bcImagesloaded === 'object'
         const isValidString =
             typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
-        let initElement;
 
         // If a selector is passed in
         if (isValidString) {
 
             // If a class was passed in
             if (this.bcImagesloaded.charAt(0) === '.') {
-                initElement = this.$element[0].querySelectorAll(this.bcImagesloaded);
+                const initElement = this.$element[0].querySelectorAll(this.bcImagesloaded);
                 this.instance = this.imagesLoaded(initElement, this.options);
             } else if (this.bcImagesloaded.charAt(0) === '#') {
                 // If an ID was passed in
-                initElement = this.$element[0].querySelector(this.bcImagesloaded);
+                const initElement = this.$element[0].querySelector(this.bcImagesloaded);
                 this.instance = this.imagesLoaded(initElement, this.options);
             }
 
@@ -57,11 +62,6 @@ export class ImagesLoadedController {
             // By default use the element itself
             this.instance = this.imagesLoaded(this.$element, this.options);
         }
-
-
-
-        this._bindEvents();
-
     }
 
 
@@ -99,11 +99,6 @@ export class ImagesLoadedController {
             })
         }
 
-    }
-
-
-    imageLoaded() {
-        console.log('image was loaded!');
     }
 
 
