@@ -2,11 +2,9 @@
 
 <!--<img src="http://cdn.benjamincharity.com/open_source/angular-imagesloaded/imagesloaded-logo.jpg" align="right" alt="angular-imagesloaded">-->
 
-[![MIT License][license_image]][license_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![CircleCI][circle_badge]][circle_link] [![NPM version][npm_version_image]][npm_url]
+[![MIT License][license_image]][license_url] [![NPM version][npm_version_image]][npm_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![CircleCI][circle_badge]][circle_link]
 
  <!--[:tv: **Plunker demo**][demo_custom_theme]-->
-
-> **NOTE:** This is currently under development and not ready for use.
 
 :camera: AngularJS integration for the imagesloaded library.
 
