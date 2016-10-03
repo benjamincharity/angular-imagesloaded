@@ -194,6 +194,61 @@ describe('ImagesLoadedController', function() {
     });
 
 
+    describe('debug option', function() {
+
+        it(`should not be set by default`, function() {
+            const template = angular.element(`
+              <div bc-imagesloaded=".test">
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="http://lorempixel.com/110/110"
+                  alt=""
+                />
+              </div>
+            `);
+
+            this.compileDirective(template);
+
+            const actual = this.vm.options.debug;
+            const expected = undefined;
+            expect(actual).toEqual(expected);
+        });
+
+
+        it(`should be set if defined as an attribute`, function() {
+            const template = angular.element(`
+              <div
+                bc-imagesloaded=".test"
+                bc-debug="true"
+              >
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="http://lorempixel.com/110/110"
+                  alt=""
+                />
+              </div>
+            `);
+
+            this.compileDirective(template);
+
+            const actual = this.vm.options.debug;
+            const expected = true;
+            expect(actual).toEqual(expected);
+        });
+
+    });
+
+
     describe('events', function() {
         let originalTimeout;
 
