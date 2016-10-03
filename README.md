@@ -1,8 +1,14 @@
 # angular-imagesloaded
 
+<!--<img src="http://cdn.benjamincharity.com/open_source/angular-imagesloaded/imagesloaded-logo.jpg" align="right" alt="angular-imagesloaded">-->
+
+[![MIT License][license_image]][license_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![NPM version][npm_version_image]][npm_url]
+
+ <!--[:tv: **Plunker demo**][demo_custom_theme]-->
+
 > **NOTE:** This is currently under development and not ready for use.
 
-AngularJS integration for the imagesloaded library.
+:camera: AngularJS integration for the imagesloaded library.
 
 _[Comments and Pull Requests welcome!][issues]_
 
@@ -145,3 +151,9 @@ Created by [David DeSandro][desandro].
 [il_docs]: http://imagesloaded.desandro.com/
 [desandro]: http://desandro.com/
 
+[coveralls_badge]: https://coveralls.io/repos/github/benjamincharity/angular-imagesloaded/badge.svg?branch=master
+[coveralls_link]: https://coveralls.io/github/benjamincharity/angular-imagesloaded?branch=master
+[license_image]: http://img.shields.io/badge/license-MIT-blue.svg
+[license_url]: LICENSE
+[npm_url]: https://npmjs.org/package/angular-imagesloaded
+[npm_version_image]: http://img.shields.io/npm/v/angular-imagesloaded.svg
