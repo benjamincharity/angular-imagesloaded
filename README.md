@@ -2,7 +2,7 @@
 
 <!--<img src="http://cdn.benjamincharity.com/open_source/angular-imagesloaded/imagesloaded-logo.jpg" align="right" alt="angular-imagesloaded">-->
 
-[![MIT License][license_image]][license_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![NPM version][npm_version_image]][npm_url]
+[![MIT License][license_image]][license_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![CircleCI][circle_badge]][circle_link] [![NPM version][npm_version_image]][npm_url]
 
  <!--[:tv: **Plunker demo**][demo_custom_theme]-->
 
@@ -157,3 +157,6 @@ Created by [David DeSandro][desandro].
 [license_url]: LICENSE
 [npm_url]: https://npmjs.org/package/angular-imagesloaded
 [npm_version_image]: http://img.shields.io/npm/v/angular-imagesloaded.svg
+[circle_badge]: https://circleci.com/gh/benjamincharity/angular-imagesloaded/tree/master.svg?style=svg
+[circle_link]: https://circleci.com/gh/benjamincharity/angular-imagesloaded/tree/master
+
