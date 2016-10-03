@@ -1,4 +1,5 @@
 describe('ImagesLoadedController', function() {
+    const WAIT = 6000;
 
     // Include the module
     beforeEach(angular.mock.module('bc.imagesloaded'));
@@ -35,30 +36,84 @@ describe('ImagesLoadedController', function() {
 
 
     describe('bcImagesloaded', function() {
+        let originalTimeout;
 
-        it(`should use $element when nothing is passed in`, function() {
+        beforeEach(() => {
+            originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        });
+
+        afterEach(function() {
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+        });
+
+        it(`should use $element when nothing is passed in`, function(done) {
             const template = angular.element(`
               <img
                 bc-imagesloaded
-                src="http://lorempixel.com/400/300"
+                src="http://lorempixel.com/100/100"
                 alt=""
               />
             `);
 
             this.compileDirective(template);
 
-            const actual = typeof this.vm.initElement;
-            const expected = 'object';
-            expect(actual).toEqual(expected);
+            // Wait for the images to load
+            setTimeout(() => {
+                // Verify that two images were added
+                const actual = this.vm.instance.images.length;
+                const expected = 1;
+                expect(actual).toEqual(expected);
+
+                done();
+            }, WAIT);
         });
 
 
-        it(`should use a selector if one is passed in`, function() {
+        it(`should use an ID selector if one is passed in`, function(done) {
             const template = angular.element(`
-              <div bc-imagesloaded=".imagesloaded__test">
+              <div bc-imagesloaded="#test">
+                <div id="test">
+                    <img
+                      class="test"
+                      src="http://lorempixel.com/100/100"
+                      alt=""
+                    />
+                    <img
+                      class="test"
+                      src="http://lorempixel.com/110/110"
+                      alt=""
+                    />
+                </div>
+              </div>
+            `);
+
+            this.compileDirective(template);
+
+
+            // Wait for the images to load
+            setTimeout(() => {
+                // Verify that two images were added
+                const actual = this.vm.instance.images.length;
+                const expected = 2;
+                expect(actual).toEqual(expected);
+
+                done();
+            }, WAIT);
+        });
+
+
+        it(`should use a class selector if one is passed in`, function(done) {
+            const template = angular.element(`
+              <div bc-imagesloaded=".test">
                 <img
-                  class="imagesloaded__test"
-                  src="http://lorempixel.com/400/300"
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="http://lorempixel.com/110/110"
                   alt=""
                 />
               </div>
@@ -66,9 +121,16 @@ describe('ImagesLoadedController', function() {
 
             this.compileDirective(template);
 
-            const actual = typeof this.vm.initElement;
-            const expected = 'string';
-            expect(actual).toEqual(expected);
+
+            // Wait for the images to load
+            setTimeout(() => {
+                // Verify that two images were added
+                const actual = this.vm.instance.images.length;
+                const expected = 2;
+                expect(actual).toEqual(expected);
+
+                done();
+            }, WAIT);
         });
 
     });
@@ -80,7 +142,7 @@ describe('ImagesLoadedController', function() {
             const template = angular.element(`
               <div
                 bc-imagesloaded
-                style="background-image: url(http://lorempixel.com/400/300)"
+                style="background-image: url(http://lorempixel.com/100/100)"
               ></div>
             `);
 
@@ -97,7 +159,7 @@ describe('ImagesLoadedController', function() {
               <div
                 bc-imagesloaded
                 bc-background="true"
-                style="background-image: url(http://lorempixel.com/400/300)"
+                style="background-image: url(http://lorempixel.com/100/100)"
               ></div>
             `);
 
@@ -117,7 +179,7 @@ describe('ImagesLoadedController', function() {
               >
                 <div
                     class="test"
-                    style="background-image: url(http://lorempixel.com/400/300)"
+                    style="background-image: url(http://lorempixel.com/100/100)"
                 ></div>
               </div>
             `);
@@ -133,7 +195,6 @@ describe('ImagesLoadedController', function() {
 
 
     describe('events', function() {
-        const WAIT = 9000;
         let originalTimeout;
 
         beforeEach(() => {
@@ -147,12 +208,21 @@ describe('ImagesLoadedController', function() {
 
         it(`should trigger the associated method on the 'always' event`, function(done) {
             const template = angular.element(`
-              <img
-                bc-imagesloaded
+              <div
+                bc-imagesloaded=".test"
                 bc-always-method="always(instance)"
-                src="http://lorempixel.com/100/100"
-                alt=""
-              />
+              >
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+              </div>
             `);
 
             this.compileDirective(template);
@@ -163,8 +233,9 @@ describe('ImagesLoadedController', function() {
 
                 // Verify the instance was passed through
                 const args = this.$scope.always.calls.allArgs();
-                const actual = args[0][0].images.length > 0;
-                const expected = true;
+                const instance = args[0][0];
+                const actual = instance.images.length;
+                const expected = 2;
                 expect(actual).toEqual(expected);
 
                 done();
@@ -173,12 +244,21 @@ describe('ImagesLoadedController', function() {
 
         it(`should trigger the associated method on the 'done' event`, function(done) {
             const template = angular.element(`
-              <img
-                bc-imagesloaded
+              <div
+                bc-imagesloaded=".test"
                 bc-done-method="done(instance)"
-                src="http://lorempixel.com/100/100"
-                alt=""
-              />
+              >
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="http://lorempixel.com/110/110"
+                  alt=""
+                />
+              </div>
             `);
 
             this.compileDirective(template);
@@ -189,8 +269,9 @@ describe('ImagesLoadedController', function() {
 
                 // Verify the instance was passed through
                 const args = this.$scope.done.calls.allArgs();
-                const actual = args[0][0].images.length > 0;
-                const expected = true;
+                const instance = args[0][0];
+                const actual = instance.images.length;
+                const expected = 2;
                 expect(actual).toEqual(expected);
 
                 done();
@@ -199,12 +280,21 @@ describe('ImagesLoadedController', function() {
 
         it(`should trigger the associated method on the 'fail' event`, function(done) {
             const template = angular.element(`
-              <img
-                bc-imagesloaded
+              <div
+                bc-imagesloaded=".test"
                 bc-fail-method="fail(instance)"
-                src="img/does/not/exist.jpg"
-                alt=""
-              />
+              >
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="img/does/not/exist.jpg"
+                  alt=""
+                />
+              </div>
             `);
 
             this.compileDirective(template);
@@ -215,9 +305,62 @@ describe('ImagesLoadedController', function() {
 
                 // Verify the instance was passed through
                 const args = this.$scope.fail.calls.allArgs();
-                const actual = args[0][0].images.length > 0;
+                const instance = args[0][0];
+
+                const actual = instance.hasAnyBroken;
                 const expected = true;
                 expect(actual).toEqual(expected);
+
+                // Verify two images exist
+                const actual2 = instance.images.length;
+                const expected2 = 2;
+                expect(actual2).toEqual(expected2);
+
+                done();
+            }, WAIT);
+        });
+
+        it(`should trigger the associated method on the 'progress' events`, function(done) {
+            const template = angular.element(`
+              <div
+                bc-imagesloaded=".test"
+                bc-progress-method="progress(instance, image)"
+              >
+                <img
+                  class="test"
+                  src="http://lorempixel.com/100/100"
+                  alt=""
+                />
+                <img
+                  class="test"
+                  src="http://lorempixel.com/110/110"
+                  alt=""
+                />
+              </div>
+            `);
+
+            this.compileDirective(template);
+
+            // Wait for the image to load
+            setTimeout(() => {
+                // Verify it was called twice
+                const actual = this.$scope.progress.calls.count();
+                const expected = 2;
+                expect(actual).toEqual(expected);
+
+                const args = this.$scope.progress.calls.argsFor(0);
+                const instance = args[0];
+                const image = args[1];
+
+                // Verify the instance was passed through
+                const actual2 = instance.images.length;
+                const expected2 = 2;
+                expect(actual2).toEqual(expected2);
+
+                // Verify the image was passed through
+                const actual3 = image.isLoaded;
+                const expected3 = true;
+                expect(actual3).toEqual(expected3);
 
                 done();
             }, WAIT);
