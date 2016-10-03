@@ -83,6 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        bindToController: {
 	            bcImagesloaded: '@?', // accepts object or string
 	            bcBackground: '@?', // accepts bool or string
+	            bcDebug: '@?', // accepts bool
 	            bcAlwaysMethod: '&?', // accepts method
 	            bcDoneMethod: '&?', // accepts method
 	            bcFailMethod: '&?', // accepts method
@@ -150,29 +151,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.options.background = this.bcBackground;
 	            }
 	
-	            // Expose imagesLoaded on this
-	            this.imagesLoaded = _imagesloaded2.default;
+	            // If the debug option is set to true
+	            if (this.bcDebug && this.bcDebug === 'true') {
+	                this.options.debug = true;
+	            }
 	
-	            // Assigning this to the controller makes testing easier
-	            this.initElement;
+	            // Expose imagesLoaded on 'this'
+	            this.imagesLoaded = _imagesloaded2.default;
 	
 	            // Test for string or object
 	            var isValidObject = _typeof(this.bcImagesloaded) === 'object';
 	            var isValidString = typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
+	            var initElement = void 0;
 	
 	            // If a selector is passed in
-	            if (isValidObject || isValidString) {
-	                // Use it
-	                this.initElement = this.bcImagesloaded;
-	            } else {
-	                // Otherwise use the $element itself
-	                this.initElement = this.$element;
-	            }
-	            console.log('this.initElement: ', this.initElement);
+	            if (isValidString) {
 	
-	            // Initialize imagesLoaded
-	            this.instance = this.imagesLoaded(this.initElement, this.options);
-	            console.info('instance created: ', this.instance);
+	                // If a class was passed in
+	                if (this.bcImagesloaded.charAt(0) === '.') {
+	                    initElement = this.$element[0].querySelectorAll(this.bcImagesloaded);
+	                    this.instance = this.imagesLoaded(initElement, this.options);
+	                } else if (this.bcImagesloaded.charAt(0) === '#') {
+	                    // If an ID was passed in
+	                    initElement = this.$element[0].querySelector(this.bcImagesloaded);
+	                    this.instance = this.imagesLoaded(initElement, this.options);
+	                }
+	            } else if (isValidObject) {
+	                // If it's an object, pass it straight in
+	                this.instance = this.imagesLoaded(this.bcImagesloaded, this.options);
+	            } else {
+	                // By default use the element itself
+	                this.instance = this.imagesLoaded(this.$element, this.options);
+	            }
 	
 	            this._bindEvents();
 	        }
@@ -185,7 +195,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (typeof this.bcAlwaysMethod === 'function') {
 	                // Call the custom method on the event
 	                this.instance.on('always', function (instance) {
-	                    console.log('always event triggered: ', instance);
 	                    _this.bcAlwaysMethod({ instance: instance });
 	                });
 	            }

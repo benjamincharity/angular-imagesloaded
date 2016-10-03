@@ -23,6 +23,11 @@ export class ImagesLoadedController {
             this.options.background = this.bcBackground;
         }
 
+        // If the debug option is set to true
+        if (this.bcDebug && this.bcDebug === 'true') {
+            this.options.debug = true;
+        }
+
         // Expose imagesLoaded on 'this'
         this.imagesLoaded = imagesLoaded;
 

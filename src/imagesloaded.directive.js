@@ -11,6 +11,7 @@ export function ImagesLoadedDirective(
         bindToController: {
             bcImagesloaded: '@?',   // accepts object or string
             bcBackground: '@?',     // accepts bool or string
+            bcDebug: '@?',          // accepts bool
             bcAlwaysMethod: '&?',   // accepts method
             bcDoneMethod: '&?',     // accepts method
             bcFailMethod: '&?',     // accepts method
