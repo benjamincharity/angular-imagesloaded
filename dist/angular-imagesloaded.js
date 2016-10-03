@@ -162,6 +162,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this._initialize();
 	            this._bindEvents();
 	        }
+	
+	        /**
+	         * Set up the imagesloaded instance
+	         */
+	
 	    }, {
 	        key: '_initialize',
 	        value: function _initialize() {
@@ -189,6 +194,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.instance = this.imagesLoaded(this.$element, this.options);
 	            }
 	        }
+	
+	        /**
+	         * Bind any applicable methods to events
+	         */
+	
 	    }, {
 	        key: '_bindEvents',
 	        value: function _bindEvents() {

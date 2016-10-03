@@ -1,7 +1,6 @@
 import { ImagesLoadedController } from './imagesloaded.controller';
 
-export function ImagesLoadedDirective(
-) {
+export function ImagesLoadedDirective() {
     'ngInject';
 
     const directive = {

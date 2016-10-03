@@ -1,5 +1,5 @@
 describe('ImagesLoadedController', function() {
-    const WAIT = 6000;
+    const WAIT = 8000;
 
     // Include the module
     beforeEach(angular.mock.module('bc.imagesloaded'));

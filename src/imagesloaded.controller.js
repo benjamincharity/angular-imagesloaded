@@ -1,14 +1,10 @@
 import imagesLoaded from 'imagesloaded';
 export class ImagesLoadedController {
 
-    constructor(
-    ) {
+    constructor() {
         'ngInject';
 
-
     }
-
-
 
 
     setup() {
@@ -36,6 +32,9 @@ export class ImagesLoadedController {
     }
 
 
+    /**
+     * Set up the imagesloaded instance
+     */
     _initialize() {
         // Test for string or object
         const isValidObject = typeof this.bcImagesloaded === 'object'
@@ -65,6 +64,9 @@ export class ImagesLoadedController {
     }
 
 
+    /**
+     * Bind any applicable methods to events
+     */
     _bindEvents() {
 
         // If 'always' function was assigned
@@ -100,7 +102,6 @@ export class ImagesLoadedController {
         }
 
     }
-
 
 }
 
