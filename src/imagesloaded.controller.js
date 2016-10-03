@@ -6,7 +6,6 @@ export class ImagesLoadedController {
         'ngInject';
 
 
-
     }
 
 
@@ -24,34 +23,39 @@ export class ImagesLoadedController {
             this.options.background = this.bcBackground;
         }
 
-        // Expose imagesLoaded on this
+        // Expose imagesLoaded on 'this'
         this.imagesLoaded = imagesLoaded;
-
-        // Assigning this to the controller makes testing easier
-        this.initElement;
 
         // Test for string or object
         const isValidObject = typeof this.bcImagesloaded === 'object'
         const isValidString =
             typeof this.bcImagesloaded === 'string' && this.bcImagesloaded.length > 0;
+        let initElement;
 
         // If a selector is passed in
-        if (isValidObject || isValidString) {
-            // Use it
-            this.initElement = this.bcImagesloaded;
+        if (isValidString) {
+
+            // If a class was passed in
+            if (this.bcImagesloaded.charAt(0) === '.') {
+                initElement = this.$element[0].querySelectorAll(this.bcImagesloaded);
+                this.instance = this.imagesLoaded(initElement, this.options);
+            } else if (this.bcImagesloaded.charAt(0) === '#') {
+                // If an ID was passed in
+                initElement = this.$element[0].querySelector(this.bcImagesloaded);
+                this.instance = this.imagesLoaded(initElement, this.options);
+            }
+
+        } else if (isValidObject) {
+            // If it's an object, pass it straight in
+            this.instance = this.imagesLoaded(this.bcImagesloaded, this.options);
         } else {
-            // Otherwise use the $element itself
-            this.initElement = this.$element;
+            // By default use the element itself
+            this.instance = this.imagesLoaded(this.$element, this.options);
         }
-
-        // Initialize imagesLoaded
-        this.instance = this.imagesLoaded(this.initElement, this.options);
-
 
 
 
         this._bindEvents();
-
 
     }
 

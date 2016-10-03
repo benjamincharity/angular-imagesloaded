@@ -168,9 +168,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                // Otherwise use the $element itself
 	                this.initElement = this.$element;
 	            }
+	            console.log('this.initElement: ', this.initElement);
 	
 	            // Initialize imagesLoaded
 	            this.instance = this.imagesLoaded(this.initElement, this.options);
+	            console.info('instance created: ', this.instance);
 	
 	            this._bindEvents();
 	        }
@@ -183,6 +185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (typeof this.bcAlwaysMethod === 'function') {
 	                // Call the custom method on the event
 	                this.instance.on('always', function (instance) {
+	                    console.log('always event triggered: ', instance);
 	                    _this.bcAlwaysMethod({ instance: instance });
 	                });
 	            }
