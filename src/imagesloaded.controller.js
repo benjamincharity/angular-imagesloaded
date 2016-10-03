@@ -72,7 +72,7 @@ export class ImagesLoadedController {
             // Call the custom method on the event
             this.instance.on('always', (instance) => {
                 this.bcAlwaysMethod({ instance: instance });
-            })
+            });
         }
 
         // If 'done' function was assigned
@@ -80,7 +80,7 @@ export class ImagesLoadedController {
             // Call the custom method on the event
             this.instance.on('done', (instance) => {
                 this.bcDoneMethod({ instance: instance });
-            })
+            });
         }
 
         // If 'fail' function was assigned
@@ -88,7 +88,7 @@ export class ImagesLoadedController {
             // Call the custom method on the event
             this.instance.on('fail', (instance) => {
                 this.bcFailMethod({ instance: instance });
-            })
+            });
         }
 
         // If 'progress' function was assigned
@@ -96,7 +96,7 @@ export class ImagesLoadedController {
             // Call the custom method on the event
             this.instance.on('progress', (instance, image) => {
                 this.bcProgressMethod({ instance: instance, image: image });
-            })
+            });
         }
 
     }
