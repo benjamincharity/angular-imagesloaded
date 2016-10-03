@@ -4,9 +4,7 @@
 
 [![MIT License][license_image]][license_url] [![NPM version][npm_version_image]][npm_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![CircleCI][circle_badge]][circle_link]
 
- <!--[:tv: **Plunker demo**][demo_custom_theme]-->
-
-:camera: AngularJS integration for the imagesloaded library.
+:camera: :white_check_mark: AngularJS integration for the imagesloaded library.
 
 _[Comments and Pull Requests welcome!][issues]_
 
