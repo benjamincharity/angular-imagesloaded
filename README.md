@@ -122,6 +122,20 @@ You can also pass in a selector string to enable imagesloaded on multiple child 
 
 > [:tv: Demo for background image][demo_background]
 
+### 'bc-debug'
+
+When this attribute is set to `true`, imagesloaded will output debug logs to the console.
+
+```html
+<img
+  src="http://lorempixel.com/400/300"
+  bc-imagesloaded
+  bc-debug="true"
+  alt=""
+/>
+```
+
+> [:tv: Demo debug][demo_debug]
 
 ## Events
 
@@ -171,6 +185,7 @@ Created by [David DeSandro][desandro].
 [demo_fail]: https://codepen.io/benjamincharity/pen/QKaVmV?editors=0010
 [demo_progress]: https://codepen.io/benjamincharity/pen/QKaRQL?editors=0010
 [demo_background]: https://codepen.io/benjamincharity/pen/LRZowA?editors=0010
+[demo_debug]:https://codepen.io/benjamincharity/pen/YGYoVr?editors=0010
 
 [il_github]: https://github.com/desandro/imagesloaded
 [il_docs]: http://imagesloaded.desandro.com/
