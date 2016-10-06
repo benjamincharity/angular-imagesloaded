@@ -6,6 +6,8 @@
 
 :camera: :white_check_mark: AngularJS integration for the imagesloaded library.
 
+> [:tv: **Demos and Examples**][demo_collection]
+
 _[Comments and Pull Requests welcome!][issues]_
 
 
@@ -23,62 +25,74 @@ _[Comments and Pull Requests welcome!][issues]_
 ## Installation
 
 #### NPM
+
 ```bash
 npm install angular-imagesloaded --save
 ```
 
 #### Bower
+
 ```bash
 bower install angular-imagesloaded --save
+```
+
+#### Manual
+
+```html
+<script src="path/to/lib/dist/angular-imagesloaded.min.js"></script>
 ```
 
 ## Dependencies
 
 - Angular.js (^1.4.0)
+- imagesloaded (^4.1.1)
 
 
 ## Usage
 
+Include `bc.imagesloaded` as a dependency in your project:
+
+```javascript
+angular.module('YourModule', ['bc.imagesloaded']);
+```
+
 ### `bc-imagesloaded`
 
-As attribute:
+Use this directive directly on an image as an attribute to create an imagesloaded instance for that
+specific image:
 
 ```html
 <img
   src="http://lorempixel.com/400/300"
   bc-imagesloaded
-  bc-always-method="vm.always(instance)"
   alt=""
 />
 ```
 
-can accept:
+> [:tv: Demo for use on element][demo_element]
 
-- string (selector)
-- object (element or multiple elements)
-
-
-Pass selector:
+You can also pass in a selector string, NodeList or array to target multiple child elements:
 
 ```html
-<div
-  bc-imagesloaded=".imagesloaded__test"
-  bc-always-method="vm.always(instance)"
->
+<div bc-imagesloaded=".test">
   <img
-    class="imagesloaded__test"
+    class="test"
+    src="http://lorempixel.com/400/300"
+    alt=""
+  />
+  <img
+    class="test"
     src="http://lorempixel.com/400/300"
     alt=""
   />
 </div>
 ```
 
+> [:tv: Demo for use with selector string][demo_always]
+
 ### `bc-background`
 
-can accept:
-
-- string (selector)
-- bool
+Set this attribute to `true` to enable imagesloaded on the background of the current element:
 
 ```html
 <div
@@ -87,6 +101,8 @@ can accept:
   style="background-image: url(http://lorempixel.com/400/300)"
 ></div>
 ```
+
+You can also pass in a selector string to enable imagesloaded on multiple child elements:
 
 ```html
 <div
@@ -97,8 +113,14 @@ can accept:
     class="test"
     style="background-image: url(http://lorempixel.com/400/300)"
   ></div>
+  <div
+    class="test"
+    style="background-image: url(http://lorempixel.com/400/300)"
+  ></div>
 </div>
 ```
+
+> [:tv: Demo for background image][demo_background]
 
 
 ## Events
@@ -142,6 +164,13 @@ Created by [David DeSandro][desandro].
 
 
 [issues]: https://github.com/benjamincharity/angular-imagesloaded/issues
+[demo_collection]: https://codepen.io/collection/AeMEpV/
+[demo_element]: https://codepen.io/benjamincharity/pen/BLJOWm?editors=0010
+[demo_done]: https://codepen.io/benjamincharity/pen/PGEawB/?editors=0010
+[demo_always]: https://codepen.io/benjamincharity/pen/RGxZwx?editors=0010
+[demo_fail]: https://codepen.io/benjamincharity/pen/QKaVmV?editors=0010
+[demo_progress]: https://codepen.io/benjamincharity/pen/QKaRQL?editors=0010
+[demo_background]: https://codepen.io/benjamincharity/pen/LRZowA?editors=0010
 
 [il_github]: https://github.com/desandro/imagesloaded
 [il_docs]: http://imagesloaded.desandro.com/
