@@ -69,7 +69,7 @@ specific image:
 />
 ```
 
-> [:tv: Demo for use on element][demo_element]
+> [:tv: Element usage demo][demo_element]
 
 You can also pass in a selector string, NodeList or array to target multiple child elements:
 
@@ -88,7 +88,7 @@ You can also pass in a selector string, NodeList or array to target multiple chi
 </div>
 ```
 
-> [:tv: Demo for use with selector string][demo_always]
+> [:tv: Selector string demo][demo_always]
 
 ### `bc-background`
 
@@ -120,7 +120,7 @@ You can also pass in a selector string to enable imagesloaded on multiple child 
 </div>
 ```
 
-> [:tv: Demo for background image][demo_background]
+> [:tv: Background image demo][demo_background]
 
 ### 'bc-debug'
 
@@ -135,7 +135,7 @@ When this attribute is set to `true`, imagesloaded will output debug logs to the
 />
 ```
 
-> [:tv: Demo debug][demo_debug]
+> [:tv: Debug flag demo][demo_debug]
 
 ## Events
 
@@ -145,17 +145,147 @@ Events can help ....
 
 Triggered after all images have been either loaded or confirmed broken.
 
+##### Available Parameters:
+
+| Param | Type | Details |
+|-------|------|---------|
+| `instance` | Object | The `imagesLoaded` instance |
+
+```html
+<div
+  bc-imagesloaded=".image"
+  bc-always-method="vm.yourAlwaysMethod(instance)"
+>
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+  <img class="image" src="image/does/not/exist.jpg" alt="" />
+</div>
+```
+
+```javascript
+class YourController {
+
+  constructor() {}
+
+  // This method will be called after all images are either loaded or confirmed broken
+  yourAlwaysMethod(instance) {
+    console.log('Images finished! Instance: ', instance)
+  }
+
+}
+```
+
+> [:tv: Always event demo][demo_always]
+
+
 ### Done
 
 Triggered after all images have successfully loaded without any broken images.
+
+##### Available Parameters:
+
+| Param | Type | Details |
+|-------|------|---------|
+| `instance` | Object | The `imagesLoaded` instance |
+
+```html
+<div
+  bc-imagesloaded=".image"
+  bc-always-method="vm.yourDoneMethod(instance)"
+>
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+</div>
+```
+
+```javascript
+class YourController {
+
+  constructor() {}
+
+  // This method will be called after all images have loaded successfully
+  yourDoneMethod(instance) {
+    console.log('All images loaded successfully! Instance: ', instance)
+  }
+
+}
+```
+
+> [:tv: Done event demo][demo_done]
+
 
 ### Fail
 
 Triggered after all images have been loaded with at least one broken image.
 
+##### Available Parameters:
+
+| Param | Type | Details |
+|-------|------|---------|
+| `instance` | Object | The `imagesLoaded` instance |
+
+```html
+<div
+  bc-imagesloaded=".image"
+  bc-always-method="vm.yourFailMethod(instance)"
+>
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+  <img class="image" src="image/does/not/exist.jpg" alt="" />
+</div>
+```
+
+```javascript
+class YourController {
+
+  constructor() {}
+
+  // This method will be called after all images have loaded and at least one is broken
+  yourFailMethod(instance) {
+    console.log('All images loaded; at least one is broken! Instance: ', instance)
+  }
+
+}
+```
+
+> [:tv: Fail event demo][demo_fail]
+
+
 ### Progress
 
 Triggered after each image has been loaded.
+
+##### Available Parameters:
+
+| Param | Type | Details |
+|-------|------|---------|
+| `instance` | Object | The `imagesLoaded` instance |
+| `image` | Object | The `LoadingImage` instance of the loaded image |
+
+```html
+<div
+  bc-imagesloaded=".image"
+  bc-always-method="vm.yourProgressMethod(instance, image)"
+>
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+  <img class="image" src="http://lorempixel.com/100/100" alt="" />
+</div>
+```
+
+```javascript
+class YourController {
+
+  constructor() {}
+
+  // This method will be called after EACH image is loaded
+  yourProgressMethod(instance, image) {
+    console.log('An image was loaded! Instance: ', instance, ' Image: ', image)
+  }
+
+}
+```
+
+> [:tv: Progress event demo][demo_progress]
 
 
 ## Development
@@ -182,10 +312,10 @@ Created by [David DeSandro][desandro].
 [issues]: https://github.com/benjamincharity/angular-imagesloaded/issues
 [demo_collection]: https://codepen.io/collection/AeMEpV/
 [demo_element]: https://codepen.io/benjamincharity/pen/BLJOWm?editors=0010
-[demo_done]: https://codepen.io/benjamincharity/pen/PGEawB/?editors=0010
-[demo_always]: https://codepen.io/benjamincharity/pen/RGxZwx?editors=0010
-[demo_fail]: https://codepen.io/benjamincharity/pen/QKaVmV?editors=0010
-[demo_progress]: https://codepen.io/benjamincharity/pen/QKaRQL?editors=0010
+[demo_always]: http://codepen.io/benjamincharity/pen/RGxZwx?editors=0011
+[demo_done]: https://codepen.io/benjamincharity/pen/PGEawB/?editors=0011
+[demo_fail]: https://codepen.io/benjamincharity/pen/QKaVmV?editors=0011
+[demo_progress]: https://codepen.io/benjamincharity/pen/QKaRQL?editors=0011
 [demo_background]: https://codepen.io/benjamincharity/pen/LRZowA?editors=0010
 [demo_debug]:https://codepen.io/benjamincharity/pen/YGYoVr?editors=0010
 
