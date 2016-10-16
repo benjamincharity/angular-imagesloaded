@@ -1,6 +1,6 @@
 # angular-imagesloaded
 
-<!--<img src="http://cdn.benjamincharity.com/open_source/angular-imagesloaded/imagesloaded-logo.jpg" align="right" alt="angular-imagesloaded">-->
+<img src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/imagesloaded.png" align="right" alt="angular-imagesloaded" style="max-width:260px;">
 
 [![MIT License][license_image]][license_url] [![NPM version][npm_version_image]][npm_url] [![Coverage Status][coveralls_badge]][coveralls_link] [![CircleCI][circle_badge]][circle_link]
 
