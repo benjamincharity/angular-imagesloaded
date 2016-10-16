@@ -292,7 +292,8 @@ class YourController {
 
 - `npm run build` - Build JS
 - `npm run watch` - Watch JS and rebuild on change
-- `npm run watch:tests` - Watch tests and re-run on change
+- `npm run test` - Run tests
+- `npm run watch:tests` - Watch test files and re-run tests on change
 
 
 
@@ -312,12 +313,12 @@ Created by [David DeSandro][desandro].
 [issues]: https://github.com/benjamincharity/angular-imagesloaded/issues
 [demo_collection]: https://codepen.io/collection/AeMEpV/
 [demo_element]: https://codepen.io/benjamincharity/pen/BLJOWm?editors=0010
+[demo_background]: https://codepen.io/benjamincharity/pen/LRZowA?editors=0010
+[demo_debug]:https://codepen.io/benjamincharity/pen/YGYoVr?editors=0010
 [demo_always]: http://codepen.io/benjamincharity/pen/RGxZwx?editors=0011
 [demo_done]: https://codepen.io/benjamincharity/pen/PGEawB/?editors=0011
 [demo_fail]: https://codepen.io/benjamincharity/pen/QKaVmV?editors=0011
 [demo_progress]: https://codepen.io/benjamincharity/pen/QKaRQL?editors=0011
-[demo_background]: https://codepen.io/benjamincharity/pen/LRZowA?editors=0010
-[demo_debug]:https://codepen.io/benjamincharity/pen/YGYoVr?editors=0010
 
 [il_github]: https://github.com/desandro/imagesloaded
 [il_docs]: http://imagesloaded.desandro.com/
