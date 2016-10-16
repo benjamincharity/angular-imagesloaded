@@ -122,7 +122,7 @@ You can also pass in a selector string to enable imagesloaded on multiple child 
 
 > [:tv: Background image demo][demo_background]
 
-### 'bc-debug'
+### `bc-debug`
 
 When this attribute is set to `true`, imagesloaded will output debug logs to the console.
 
