@@ -139,18 +139,23 @@ When this attribute is set to `true`, imagesloaded will output debug logs to the
 
 ## Events
 
+Events can help ....
 
 ### Always
 
+Triggered after all images have been either loaded or confirmed broken.
 
 ### Done
 
+Triggered after all images have successfully loaded without any broken images.
 
 ### Fail
 
+Triggered after all images have been loaded with at least one broken image.
 
 ### Progress
 
+Triggered after each image has been loaded.
 
 
 ## Development
