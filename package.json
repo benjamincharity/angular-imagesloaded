@@ -1,6 +1,6 @@
 {
   "name": "angular-imagesloaded",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": ":camera: AngularJS integration for the imagesloaded library.",
   "keywords": [
     "angular",
