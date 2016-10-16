@@ -51,7 +51,7 @@ describe('ImagesLoadedController', function() {
             const template = angular.element(`
               <img
                 bc-imagesloaded
-                src="http://lorempixel.com/100/100"
+                src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                 alt=""
               />
             `);
@@ -76,12 +76,12 @@ describe('ImagesLoadedController', function() {
                 <div id="test">
                     <img
                       class="test"
-                      src="http://lorempixel.com/100/100"
+                      src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                       alt=""
                     />
                     <img
                       class="test"
-                      src="http://lorempixel.com/110/110"
+                      src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                       alt=""
                     />
                 </div>
@@ -108,12 +108,12 @@ describe('ImagesLoadedController', function() {
               <div bc-imagesloaded=".test">
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="http://lorempixel.com/110/110"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                   alt=""
                 />
               </div>
@@ -142,7 +142,7 @@ describe('ImagesLoadedController', function() {
             const template = angular.element(`
               <div
                 bc-imagesloaded
-                style="background-image: url(http://lorempixel.com/100/100)"
+                style="background-image: url(http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg)"
               ></div>
             `);
 
@@ -159,7 +159,7 @@ describe('ImagesLoadedController', function() {
               <div
                 bc-imagesloaded
                 bc-background="true"
-                style="background-image: url(http://lorempixel.com/100/100)"
+                style="background-image: url(http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg)"
               ></div>
             `);
 
@@ -179,7 +179,7 @@ describe('ImagesLoadedController', function() {
               >
                 <div
                     class="test"
-                    style="background-image: url(http://lorempixel.com/100/100)"
+                    style="background-image: url(http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg)"
                 ></div>
               </div>
             `);
@@ -201,12 +201,12 @@ describe('ImagesLoadedController', function() {
               <div bc-imagesloaded=".test">
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="http://lorempixel.com/110/110"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                   alt=""
                 />
               </div>
@@ -228,12 +228,12 @@ describe('ImagesLoadedController', function() {
               >
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="http://lorempixel.com/110/110"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                   alt=""
                 />
               </div>
@@ -269,12 +269,12 @@ describe('ImagesLoadedController', function() {
               >
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                   alt=""
                 />
               </div>
@@ -305,12 +305,12 @@ describe('ImagesLoadedController', function() {
               >
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="http://lorempixel.com/110/110"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                   alt=""
                 />
               </div>
@@ -341,12 +341,12 @@ describe('ImagesLoadedController', function() {
               >
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="img/does/not/exist.jpg"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/does/not/exist.jpg"
                   alt=""
                 />
               </div>
@@ -383,12 +383,12 @@ describe('ImagesLoadedController', function() {
               >
                 <img
                   class="test"
-                  src="http://lorempixel.com/100/100"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-1.jpg"
                   alt=""
                 />
                 <img
                   class="test"
-                  src="http://lorempixel.com/110/110"
+                  src="http://cdn.benjamincharity.com/codepen/angular-imagesloaded/test-resources/image-2.jpg"
                   alt=""
                 />
               </div>
@@ -424,8 +424,5 @@ describe('ImagesLoadedController', function() {
     });
 
 
-
 });
-
-
 
