@@ -160,12 +160,9 @@ Triggered after each image has been loaded.
 
 ## Development
 
-- `npm run build` - Build JS/CSS/HTML/SVG
-- `npm run build:js` - Build JS
-- `npm run build:css` - Build CSS
-- `npm run watch:css` - Watch CSS and rebuild on change
-- `npm run watch:js` - Watch JS/HTML and rebuild on change
-- `npm run watch` - Watch JS/CSS/HTML and rebuild on change
+- `npm run build` - Build JS
+- `npm run watch` - Watch JS and rebuild on change
+- `npm run watch:tests` - Watch tests and re-run on change
 
 
 
